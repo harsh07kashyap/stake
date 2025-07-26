@@ -3,8 +3,18 @@ import express from "express";
 import { outcomes } from "./outcomes";
 import cors from "cors";
 
+
+
 const app = express();
-app.use(cors())
+app.use(express.json());
+app.use(cors());
+app.use(cors({
+    origin: ["https://stake-sage.vercel.app"],
+    methods: 'GET,POST,PUT,PATCH,DELETE,OPTIONS', // Allowed HTTP methods
+    allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, auth-token', // Allowed headers
+    credentials: true // If you need to send cookies or HTTP authentication
+}));
+
 
 const TOTAL_DROPS = 16;
 
